@@ -1,6 +1,6 @@
 name 'Flameeyes-gentoo'
-version '0.0.2'
-author 'Diego Elio Pettenò <flameeyes@flameeyes.eu>'
+version '0.0.3'
+author 'Diego Elio Petteno` <flameeyes@flameeyes.eu>'
 license 'Apache License, Version 2.0'
 summary 'General Gentoo Linux configuration'
 description 'This module allows to configure some common Gentoo Linux files.
