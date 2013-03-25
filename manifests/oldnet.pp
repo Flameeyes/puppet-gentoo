@@ -48,15 +48,20 @@ define gentoo::oldnet::interface($addresses, $routes = [], $bridge = false, $bri
     order => 10,
   }
 
+  # This was broken in previous versions
   file { "/etc/init.d/${name}":
+    ensure => absent
+  }
+
+  file { "/etc/init.d/net.${name}":
     ensure => link,
     target => "net.lo",
   }
 
-  service { "${name}":
+  service { "net.${name}":
     ensure => running,
     enable => true,
-    require => [ File["/etc/init.d/${name}"], $extra_service_deps ],
+    require => [ File["/etc/init.d/net.${name}"], $extra_service_deps ],
     subscribe => File[$confd],
     hasrestart => true,
   }
