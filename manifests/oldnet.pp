@@ -65,7 +65,7 @@ define gentoo::oldnet::interface($addresses, $routes = [], $bridge = false, $bri
 define gentoo::oldnet::ipv6tunnel($link, $remote_v4, $remote_v6, $local_v4, $local_v6) {
   $confd = "/etc/conf.d/net"
 
-  concat::fragment { "oldnet_${name}":
+  concat::fragment { "oldnet_${name}_ipv6tunnel":
     target => $confd,
     content => template("gentoo/oldnet.ipv6tunnel.erb"),
     order => 20,

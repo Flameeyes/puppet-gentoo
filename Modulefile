@@ -1,5 +1,5 @@
 name 'Flameeyes-gentoo'
-version '0.0.4'
+version '0.0.5'
 author 'Diego Elio Petteno` <flameeyes@flameeyes.eu>'
 license 'Apache License, Version 2.0'
 summary 'General Gentoo Linux configuration'
