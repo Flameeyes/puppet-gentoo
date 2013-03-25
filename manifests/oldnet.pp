@@ -35,6 +35,10 @@ define gentoo::oldnet::interface($addresses, $routes = [], $bridge = false, $bri
   } else {
     $extra_service_deps = []
   }
+
+  # these allow the user to provide a non-array through parameters.
+  $all_addresses = [ $addresses ]
+  $all_routes = [ $routes ]
   
   $confd = "/etc/conf.d/net"
 

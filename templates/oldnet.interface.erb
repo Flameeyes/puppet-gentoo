@@ -3,12 +3,12 @@ bridge_<%= name %>="<%= bridge_interfaces.join(' ') %>"
 <% end -%>
 
 config_<%= name %>="
-<% addresses.flatten.each do |address| -%>
+<% all_addresses.flatten.each do |address| -%>
   <%= address %>
 <% end -%>
 "
 routes_<%= name %>="
-<% routes.flatten.each do |route| -%>
+<% all_routes.flatten.each do |route| -%>
   <%= route %>
 <% end -%>
 "
