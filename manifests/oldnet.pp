@@ -81,3 +81,16 @@ define gentoo::oldnet::ipv6tunnel($link, $remote_v4, $remote_v6, $local_v4, $loc
     routes => "default via ${remote_v6}"
   }
 }
+
+define gentoo::oldnet::tuntap($type = tun, $addresses = [], $routes = []) {
+  concat::fragment { "oldnet_${name}_tuntap":
+    $target => "/etc/conf.d/net",
+    content => "tuntap_${name}=$type\n",
+    order => 05
+  }
+
+  gentoo::oldnet::interface { $name:
+    addresses => $addresses,
+    routes => $routes,
+  }
+}
