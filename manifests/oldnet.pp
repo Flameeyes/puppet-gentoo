@@ -78,7 +78,7 @@ define gentoo::oldnet::ipv6tunnel($link, $remote_v4, $remote_v6, $local_v4, $loc
 
   gentoo::oldnet::interface { $name:
     addresses => "${local_v6}/64",
-    routes => "default via ${remote_v6}"
+    routes => "default via ${remote_v6} src ${local_v6}"
   }
 }
 
