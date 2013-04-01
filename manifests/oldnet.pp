@@ -67,7 +67,7 @@ define gentoo::oldnet::interface($addresses, $routes = [], $bridge = false, $bri
   }
 }
 
-define gentoo::oldnet::ipv6tunnel($link, $remote_v4, $remote_v6, $local_v4, $local_v6) {
+define gentoo::oldnet::ipv6tunnel($link, $remote_v4, $remote_v6, $local_v4, $local_v6, $source = '') {
   $confd = "/etc/conf.d/net"
 
   concat::fragment { "oldnet_${name}_ipv6tunnel":
@@ -76,9 +76,15 @@ define gentoo::oldnet::ipv6tunnel($link, $remote_v4, $remote_v6, $local_v4, $loc
     order => 20,
   }
 
+  if $source == '' {
+    $src = $local_v6
+  } else {
+    $src = $source
+  }
+
   gentoo::oldnet::interface { $name:
     addresses => "${local_v6}/64",
-    routes => "default via ${remote_v6} src ${local_v6}"
+    routes => "default via ${remote_v6} src ${src}"
   }
 }
 
